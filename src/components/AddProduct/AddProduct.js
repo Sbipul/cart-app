@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { ADD_PRODUCT, generateAction } from '../../redux/actions/action';
 
 const AddProduct = () => {
     const dispatch = useDispatch()
-    const allProducts = useSelector(state=>state.products.products)
+    // const allProducts = useSelector(state=>state.products.products)
     const [product,setProduct] = useState({})
     const createData = (e)=>setProduct({ ...product,[e.target.name]: e.target.value });
     const addProduct = (e)=>{
@@ -12,7 +12,6 @@ const AddProduct = () => {
         dispatch(generateAction(ADD_PRODUCT,product))
         e.target.reset()
     }
-    console.log(allProducts)
     return (
         <div>
             <div className="formContainer">

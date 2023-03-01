@@ -3,9 +3,10 @@ import { useDispatch } from 'react-redux';
 import { ADD_TO_CART, generateAction, UPDATE_QUANTITY } from '../../redux/actions/action';
 
 const ProductCard = ({product}) => {
-  
+
   const dispatch = useDispatch()
   const {productName,id,price,category,quantity,url} = product;
+  
     const addToCart = ()=>{
       dispatch(generateAction(ADD_TO_CART,product))
       dispatch(generateAction(UPDATE_QUANTITY,id))
@@ -20,7 +21,7 @@ const ProductCard = ({product}) => {
               <p className="productPrice">BDT <span className="lws-price">{price}</span></p>
               <p className="productQuantity">QTY <span className="lws-quantity">{quantity}</span></p>
             </div>
-            <button onClick={addToCart} className="lws-btnAddToCart">Add To Cart {id}</button>
+            <button onClick={addToCart} disabled={quantity===0 && true} className="lws-btnAddToCart">Add To Cart {id}</button>
           </div>
         </div>
     );
